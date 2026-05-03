@@ -14,6 +14,20 @@ Text Domain: joshs-writeup
 Tags: blog, one-column, two-columns, custom-menu, featured-images, threaded-comments, translation-ready
 */
 
+/* ---------- Color Palette ---------- */
+:root {
+	--color-primary: #1a2332;
+	--color-accent: #0056b3;
+	--color-highlight: #e63946;
+	--color-text: #333;
+	--color-text-light: #666;
+	--color-bg: #f4f5f7;
+	--color-card: #fff;
+	--color-border: #e0e0e0;
+	--font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	--font-body: 'Georgia', 'Times New Roman', serif;
+}
+
 /* Base reset */
 *,
 *::before,
@@ -23,15 +37,15 @@ Tags: blog, one-column, two-columns, custom-menu, featured-images, threaded-comm
 
 body {
 	margin: 0;
-	font-family: 'Georgia', 'Times New Roman', serif;
+	font-family: var(--font-body);
 	font-size: 18px;
 	line-height: 1.8;
-	color: #333;
-	background-color: #fafafa;
+	color: var(--color-text);
+	background-color: var(--color-bg);
 }
 
 a {
-	color: #0056b3;
+	color: var(--color-accent);
 	text-decoration: none;
 }
 

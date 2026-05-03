@@ -38,7 +38,8 @@
 
 			<nav id="site-navigation" class="main-navigation">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<?php esc_html_e( 'Menu', 'joshs-writeup' ); ?>
+					<span class="hamburger"></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'joshs-writeup' ); ?></span>
 				</button>
 				<?php
 				wp_nav_menu( array(
@@ -48,6 +49,16 @@
 				) );
 				?>
 			</nav>
+
+			<div class="header-search">
+				<button class="header-search-toggle" aria-expanded="false">
+					<span class="search-icon"></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Search', 'joshs-writeup' ); ?></span>
+				</button>
+				<div class="header-search-form">
+					<?php get_search_form(); ?>
+				</div>
+			</div>
 		</div>
 	</header>
 

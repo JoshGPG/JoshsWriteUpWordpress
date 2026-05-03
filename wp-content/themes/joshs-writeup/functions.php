@@ -45,6 +45,9 @@ function joshs_writeup_setup() {
 		'flex-width'  => true,
 	) );
 
+	// Custom image size for featured stories.
+	add_image_size( 'joshs-writeup-featured', 1200, 600, true );
+
 	// Set content width.
 	if ( ! isset( $content_width ) ) {
 		$content_width = 720;
@@ -60,6 +63,16 @@ function joshs_writeup_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', 'joshs-writeup' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here to appear in the sidebar.', 'joshs-writeup' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Widgets', 'joshs-writeup' ),
+		'id'            => 'footer-widgets',
+		'description'   => esc_html__( 'Add widgets here to appear in the footer.', 'joshs-writeup' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -99,6 +112,20 @@ function joshs_writeup_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'joshs_writeup_scripts' );
+
+/**
+ * Estimate reading time for the current post.
+ *
+ * @return string Reading time string, e.g. "3 min read".
+ */
+function joshs_writeup_reading_time() {
+	$content    = get_post_field( 'post_content', get_the_ID() );
+	$word_count = str_word_count( wp_strip_all_tags( $content ) );
+	$minutes    = max( 1, (int) ceil( $word_count / 250 ) );
+
+	/* translators: %d: number of minutes */
+	return sprintf( _n( '%d min read', '%d min read', $minutes, 'joshs-writeup' ), $minutes );
+}
 
 /**
  * Customizer additions.

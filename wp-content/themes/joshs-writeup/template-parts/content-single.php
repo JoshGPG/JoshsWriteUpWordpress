@@ -8,6 +8,15 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+		<?php
+		$categories = get_the_category();
+		if ( ! empty( $categories ) ) :
+		?>
+			<a class="category-badge" href="<?php echo esc_url( get_category_link( $categories[0]->term_id ) ); ?>">
+				<?php echo esc_html( $categories[0]->name ); ?>
+			</a>
+		<?php endif; ?>
+
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 		<div class="entry-meta">
@@ -23,6 +32,11 @@
 				);
 				?>
 			</span>
+			<?php if ( function_exists( 'joshs_writeup_reading_time' ) ) : ?>
+				<span class="reading-time">
+					<?php echo esc_html( joshs_writeup_reading_time() ); ?>
+				</span>
+			<?php endif; ?>
 		</div>
 	</header>
 
@@ -45,12 +59,12 @@
 
 	<footer class="entry-footer">
 		<?php
-		$categories_list = get_the_category_list( esc_html__( ', ', 'joshs-writeup' ) );
+		$categories_list = get_the_category_list( ' ' );
 		if ( $categories_list ) {
 			printf( '<span class="cat-links">' . esc_html__( 'Posted in %s', 'joshs-writeup' ) . '</span>', $categories_list );
 		}
 
-		$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'joshs-writeup' ) );
+		$tags_list = get_the_tag_list( '', ' ' );
 		if ( $tags_list ) {
 			printf( '<span class="tags-links">' . esc_html__( 'Tagged %s', 'joshs-writeup' ) . '</span>', $tags_list );
 		}
