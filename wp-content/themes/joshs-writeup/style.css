@@ -1,0 +1,47 @@
+/*
+Theme Name: Josh's Write Up
+Theme URI:
+Author: Josh
+Author URI:
+Description: A clean, reading-focused blog theme with responsive typography.
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: joshs-writeup
+Tags: blog, one-column, two-columns, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/* Base reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Georgia', 'Times New Roman', serif;
+	font-size: 18px;
+	line-height: 1.8;
+	color: #333;
+	background-color: #fafafa;
+}
+
+a {
+	color: #0056b3;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus {
+	color: #003d80;
+	text-decoration: underline;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
